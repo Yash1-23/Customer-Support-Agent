@@ -18,15 +18,7 @@ This project solves that by splitting responsibilities cleanly:
 
 This is the same architectural principle used in production financial systems: the model extracts facts, code makes the decision.
 
-LLM orchestration layer  ──►  reads facts via tools  ──►  proposes a decision
-                                                              │
-                                                              ▼
-                                          Deterministic guard (pure Python)
-                                          re-validates ALL policy rules
-                                                              │
-                                            ┌─────────────────┴─────────────────┐
-                                            ▼                                     ▼
-                                      ✅ APPROVE                            ❌ DENY (holds the line)
+<img width="1043" height="1268" alt="Screenshot 2026-06-23 184831" src="https://github.com/user-attachments/assets/06312f06-8bc6-45e8-94d9-ab2422a9357f" />
 
 
 Even if the LLM is convinced a refund should be issued, the guard independently verifies the refund window, category policy, and customer flags. If any rule fails, the refund is denied — regardless of what the conversation looked like.
