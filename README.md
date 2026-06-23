@@ -134,4 +134,14 @@ test_guard.py asserts that policy-violating refund requests are denied by the de
 - Complete test data — 15 profiles and 21 orders cover every policy branch, so each rule can be demonstrated live.
 
 
-                                      
+## Possible Extensions
+
+
+Voice pipeline (e.g. ElevenLabs TTS / browser-mic → Whisper) for spoken refund handling.
+
+Persisting reasoning traces to a database for long-term audit.
+
+A human-in-the-loop escalation path for ambiguous cases.
+
+
+                 
