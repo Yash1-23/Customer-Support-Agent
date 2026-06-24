@@ -1,7 +1,4 @@
 """Mock data store: 15-profile CRM + category refund policy. Plain dicts, no DB.
- 
-TODAY is fixed so refund-window math is deterministic and demoable.
-The human-readable policy lives in refund_policy.md; this file is its machine form.
 """
  
 TODAY = "2026-06-22"
