@@ -1,7 +1,7 @@
 """Tools the agent can call: five read-only lookups + one guarded action.
  
 THE KEY DESIGN DECISION
------------------------
+
 The LLM gathers facts with the read tools and talks to the customer, but it does
 NOT decide refunds. issue_refund() is a deterministic Python guard: it re-checks
 EVERY policy rule itself, so no amount of customer persuasion (or LLM mistake)
@@ -21,9 +21,9 @@ def _days_between(d1: str, d2: str) -> int:
     return (date(y2, m2, dd2) - date(y1, m1, dd1)).days
  
  
-# ----------------------------------------------------------------------
+
 # 5 read-only tools — the agent calls these to gather facts (visible in the loop)
-# ----------------------------------------------------------------------
+
  
 def lookup_order(order_id: str) -> dict:
     order = data.ORDERS.get(order_id)
@@ -68,12 +68,12 @@ def check_customer_flags(customer_id: str) -> dict:
     return {"found": True, **flags}
  
  
-# ----------------------------------------------------------------------
+
 # The guarded action — deterministic. Re-checks everything. LLM cannot override.
-# ----------------------------------------------------------------------
  
 def issue_refund(order_id: str, customer_id: str) -> dict:
-    """Deterministic refund guard. Returns APPROVE (+ refund issued) or DENY (+ reasons).
+ 
+    """  Deterministic refund guard. Returns APPROVE (+ refund issued) or DENY (+ reasons).
     Every rule is re-checked here regardless of what the conversation claimed."""
     reasons = []
  
@@ -121,9 +121,7 @@ def issue_refund(order_id: str, customer_id: str) -> dict:
             "message": f"Refund of Rs {order['price']:.2f} issued for {order['item']}."}
  
  
-# ----------------------------------------------------------------------
 # Dispatch table + JSON schemas the LLM sees
-# ----------------------------------------------------------------------
  
 TOOL_FUNCTIONS = {
     "lookup_order": lookup_order,
