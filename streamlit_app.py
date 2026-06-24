@@ -12,7 +12,7 @@ You can paste your GROQ_API_KEY in the sidebar, or set it in a .env file.
 import os
 import json
 
-import streamlit_app as st
+import streamlit as st
 import agent_graph
 
 st.set_page_config(page_title="Refund Support Agent", layout="wide")
